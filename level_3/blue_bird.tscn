@@ -1,0 +1,158 @@
+[gd_scene load_steps=19 format=3 uid="uid://sc4jbylpmmce"]
+
+[ext_resource type="Texture2D" uid="uid://dqnw507b5ghme" path="res://assets/Enemy/Level 3/BlueBird/Flying (32x32).png" id="1_3ghch"]
+[ext_resource type="Script" path="res://level_3/blue_bird.gd" id="1_kw0j1"]
+[ext_resource type="Texture2D" uid="uid://b58qa8r676e7b" path="res://assets/Enemy/Level 3/BlueBird/Hit (32x32).png" id="2_mr4fw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vi27c"]
+radius = 12.0
+height = 32.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ihe1"]
+atlas = ExtResource("1_3ghch")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj3r8"]
+atlas = ExtResource("1_3ghch")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy470"]
+atlas = ExtResource("1_3ghch")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ngl4"]
+atlas = ExtResource("1_3ghch")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1dry"]
+atlas = ExtResource("1_3ghch")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20kpg"]
+atlas = ExtResource("1_3ghch")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwc6c"]
+atlas = ExtResource("1_3ghch")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xigf4"]
+atlas = ExtResource("1_3ghch")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kvu4"]
+atlas = ExtResource("1_3ghch")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wio16"]
+atlas = ExtResource("2_mr4fw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lot66"]
+atlas = ExtResource("2_mr4fw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_428ay"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ihe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj3r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy470")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ngl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1dry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20kpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwc6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xigf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kvu4")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wio16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lot66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wio16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lot66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wio16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lot66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wio16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lot66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wio16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lot66")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h2yj4"]
+radius = 12.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xaryk"]
+radius = 13.0
+height = 34.0
+
+[node name="BlueBird" type="CharacterBody2D"]
+script = ExtResource("1_kw0j1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vi27c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_428ay")
+animation = &"fly"
+frame_progress = 0.334417
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_h2yj4")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xaryk")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

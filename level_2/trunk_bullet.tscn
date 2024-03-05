@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx8yai80ll4jh"]
+
+[ext_resource type="Script" path="res://level_2/trunk_bullet.gd" id="1_p4m6h"]
+[ext_resource type="Texture2D" uid="uid://bvmgvi1bf4e1y" path="res://assets/Enemy/Level 2/Trunk/Bullet.png" id="2_7hg4c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4et5"]
+radius = 3.5
+height = 11.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mcpj0"]
+radius = 3.5
+height = 12.0
+
+[node name="TrunkBullet" type="CharacterBody2D"]
+position = Vector2(48, 16)
+rotation = 3.14159
+scale = Vector2(2, 2)
+script = ExtResource("1_p4m6h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7hg4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.499996, 0.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_e4et5")
+
+[node name="DeadArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadArea"]
+position = Vector2(0.499996, 0.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mcpj0")
+
+[connection signal="body_entered" from="DeadArea" to="." method="_on_hit_box_body_entered"]

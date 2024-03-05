@@ -1,0 +1,406 @@
+[gd_scene load_steps=16 format=3 uid="uid://ctqhnrku6ix0c"]
+
+[ext_resource type="Script" path="res://menus/level_menu.gd" id="1_vvyom"]
+[ext_resource type="Texture2D" uid="uid://dutfeo6h1gs6a" path="res://assets/GUI/Level_Menu (1)_.png" id="3_lmxpv"]
+[ext_resource type="Texture2D" uid="uid://mcrpaq82fe0e" path="res://assets/GUI/Level_Menu (7)_.png" id="4_1eyq7"]
+[ext_resource type="FontFile" uid="uid://c7j7lsyd4yfdu" path="res://assets/Font/UVN Da Lat.TTF" id="5_buitq"]
+[ext_resource type="Texture2D" uid="uid://b2ci5cu3io7tr" path="res://assets/GUI/Level_Menu (4)_.png" id="6_shtd5"]
+[ext_resource type="Texture2D" uid="uid://b1vapcww1nh57" path="res://assets/GUI/Level_Menu (5)_.png" id="7_spc8w"]
+[ext_resource type="Texture2D" uid="uid://dqxd78hfoumkj" path="res://assets/GUI/Level_Menu (6)_.png" id="8_0xlor"]
+[ext_resource type="Texture2D" uid="uid://b7qe0dc437sbq" path="res://assets/GUI/Level_Menu (3)_.png" id="9_f2shj"]
+[ext_resource type="Texture2D" uid="uid://1nf22smdfnm" path="res://assets/GUI/Level_Menu (4) (disable).png" id="10_6w506"]
+[ext_resource type="Texture2D" uid="uid://dmc318vqfj8hi" path="res://assets/GUI/Level_Menu (2)_.png" id="10_ecvca"]
+[ext_resource type="Texture2D" uid="uid://bhaab0w7kq5c8" path="res://assets/GUI/Level_Menu (2) (hover).png" id="12_1cqlw"]
+[ext_resource type="Texture2D" uid="uid://b5slpjb1mr1g0" path="res://assets/GUI/Level_Menu (2) (disable).png" id="13_cs3fr"]
+[ext_resource type="Texture2D" uid="uid://pi2rnu0phkm4" path="res://assets/GUI/Level_Menu (8).png" id="14_v4svq"]
+[ext_resource type="Texture2D" uid="uid://dfeek6fffanoq" path="res://assets/GUI/Level_Menu (8) (hover).png" id="15_so31d"]
+[ext_resource type="AudioStream" uid="uid://c7refosgpf56u" path="res://assets/Sound/click.ogg" id="17_inxpd"]
+
+[node name="LevelMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.006
+offset_right = -1920.0
+offset_bottom = -1056.3
+script = ExtResource("1_vvyom")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 1920.0
+offset_bottom = 1056.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Frame" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_lmxpv")
+stretch_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 722.0
+offset_top = 161.0
+offset_right = 1197.0
+offset_bottom = 274.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("4_1eyq7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 768.0
+offset_top = 160.0
+offset_right = 1152.0
+offset_bottom = 273.0
+alignment = 1
+
+[node name="Title" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_buitq")
+theme_override_font_sizes/font_size = 70
+text = "Levels"
+horizontal_alignment = 1
+
+[node name="Levels" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 292.0
+offset_right = 1120.0
+offset_bottom = 778.0
+alignment = 1
+
+[node name="Star1" type="HBoxContainer" parent="Levels"]
+layout_mode = 2
+alignment = 1
+
+[node name="Level1_0" type="TextureRect" parent="Levels/Star1"]
+layout_mode = 2
+texture = ExtResource("6_shtd5")
+
+[node name="Level1_1" type="TextureRect" parent="Levels/Star1"]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_spc8w")
+
+[node name="Level1_2" type="TextureRect" parent="Levels/Star1"]
+visible = false
+layout_mode = 2
+texture = ExtResource("8_0xlor")
+
+[node name="Level1_3" type="TextureRect" parent="Levels/Star1"]
+visible = false
+layout_mode = 2
+texture = ExtResource("9_f2shj")
+
+[node name="Level1_disable" type="TextureRect" parent="Levels/Star1"]
+visible = false
+layout_mode = 2
+texture = ExtResource("10_6w506")
+
+[node name="Spacing" type="NinePatchRect" parent="Levels/Star1"]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+
+[node name="Level2_0" type="TextureRect" parent="Levels/Star1"]
+layout_mode = 2
+texture = ExtResource("6_shtd5")
+
+[node name="Level2_1" type="TextureRect" parent="Levels/Star1"]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_spc8w")
+
+[node name="Level2_2" type="TextureRect" parent="Levels/Star1"]
+visible = false
+layout_mode = 2
+texture = ExtResource("8_0xlor")
+
+[node name="Level2_3" type="TextureRect" parent="Levels/Star1"]
+visible = false
+layout_mode = 2
+texture = ExtResource("9_f2shj")
+
+[node name="Level2_disable" type="TextureRect" parent="Levels/Star1"]
+visible = false
+layout_mode = 2
+texture = ExtResource("10_6w506")
+
+[node name="Map1" type="HBoxContainer" parent="Levels"]
+layout_mode = 2
+alignment = 1
+
+[node name="Level1" type="TextureButton" parent="Levels/Map1"]
+layout_mode = 2
+texture_normal = ExtResource("10_ecvca")
+texture_pressed = ExtResource("10_ecvca")
+texture_hover = ExtResource("12_1cqlw")
+texture_disabled = ExtResource("13_cs3fr")
+
+[node name="Spacing" type="NinePatchRect" parent="Levels/Map1"]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+
+[node name="Level2" type="TextureButton" parent="Levels/Map1"]
+layout_mode = 2
+texture_normal = ExtResource("10_ecvca")
+texture_pressed = ExtResource("10_ecvca")
+texture_hover = ExtResource("12_1cqlw")
+texture_disabled = ExtResource("13_cs3fr")
+
+[node name="Spacing" type="NinePatchRect" parent="Levels"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Star2" type="HBoxContainer" parent="Levels"]
+layout_mode = 2
+alignment = 1
+
+[node name="Level1_0" type="TextureRect" parent="Levels/Star2"]
+layout_mode = 2
+texture = ExtResource("6_shtd5")
+
+[node name="Level1_1" type="TextureRect" parent="Levels/Star2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_spc8w")
+
+[node name="Level1_2" type="TextureRect" parent="Levels/Star2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("8_0xlor")
+
+[node name="Level1_3" type="TextureRect" parent="Levels/Star2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("9_f2shj")
+
+[node name="Level1_disable" type="TextureRect" parent="Levels/Star2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("10_6w506")
+
+[node name="Spacing" type="NinePatchRect" parent="Levels/Star2"]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+
+[node name="Level2_0" type="TextureRect" parent="Levels/Star2"]
+layout_mode = 2
+texture = ExtResource("6_shtd5")
+
+[node name="Level2_1" type="TextureRect" parent="Levels/Star2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_spc8w")
+
+[node name="Level2_2" type="TextureRect" parent="Levels/Star2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("8_0xlor")
+
+[node name="Level2_3" type="TextureRect" parent="Levels/Star2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("9_f2shj")
+
+[node name="Level2_disable" type="TextureRect" parent="Levels/Star2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("10_6w506")
+
+[node name="Map2" type="HBoxContainer" parent="Levels"]
+layout_mode = 2
+alignment = 1
+
+[node name="Level3" type="TextureButton" parent="Levels/Map2"]
+layout_mode = 2
+texture_normal = ExtResource("10_ecvca")
+texture_pressed = ExtResource("10_ecvca")
+texture_hover = ExtResource("12_1cqlw")
+texture_disabled = ExtResource("13_cs3fr")
+
+[node name="Spacing" type="NinePatchRect" parent="Levels/Map2"]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+
+[node name="Level4" type="TextureButton" parent="Levels/Map2"]
+layout_mode = 2
+texture_normal = ExtResource("10_ecvca")
+texture_pressed = ExtResource("10_ecvca")
+texture_hover = ExtResource("12_1cqlw")
+texture_disabled = ExtResource("13_cs3fr")
+
+[node name="Spacing2" type="NinePatchRect" parent="Levels"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Star3" type="HBoxContainer" parent="Levels"]
+layout_mode = 2
+alignment = 1
+
+[node name="Level1_0" type="TextureRect" parent="Levels/Star3"]
+layout_mode = 2
+texture = ExtResource("6_shtd5")
+
+[node name="Level1_1" type="TextureRect" parent="Levels/Star3"]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_spc8w")
+
+[node name="Level1_2" type="TextureRect" parent="Levels/Star3"]
+visible = false
+layout_mode = 2
+texture = ExtResource("8_0xlor")
+
+[node name="Level1_3" type="TextureRect" parent="Levels/Star3"]
+visible = false
+layout_mode = 2
+texture = ExtResource("9_f2shj")
+
+[node name="Level1_disable" type="TextureRect" parent="Levels/Star3"]
+visible = false
+layout_mode = 2
+texture = ExtResource("10_6w506")
+
+[node name="Spacing" type="NinePatchRect" parent="Levels/Star3"]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+
+[node name="Level2_0" type="TextureRect" parent="Levels/Star3"]
+layout_mode = 2
+texture = ExtResource("6_shtd5")
+
+[node name="Level2_1" type="TextureRect" parent="Levels/Star3"]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_spc8w")
+
+[node name="Level2_2" type="TextureRect" parent="Levels/Star3"]
+visible = false
+layout_mode = 2
+texture = ExtResource("8_0xlor")
+
+[node name="Level2_3" type="TextureRect" parent="Levels/Star3"]
+visible = false
+layout_mode = 2
+texture = ExtResource("9_f2shj")
+
+[node name="Level2_disable" type="TextureRect" parent="Levels/Star3"]
+visible = false
+layout_mode = 2
+texture = ExtResource("10_6w506")
+
+[node name="Map3" type="HBoxContainer" parent="Levels"]
+layout_mode = 2
+alignment = 1
+
+[node name="Level5" type="TextureButton" parent="Levels/Map3"]
+layout_mode = 2
+texture_normal = ExtResource("10_ecvca")
+texture_pressed = ExtResource("10_ecvca")
+texture_hover = ExtResource("12_1cqlw")
+texture_disabled = ExtResource("13_cs3fr")
+
+[node name="Spacing" type="NinePatchRect" parent="Levels/Map3"]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+
+[node name="Level6" type="TextureButton" parent="Levels/Map3"]
+layout_mode = 2
+texture_normal = ExtResource("10_ecvca")
+texture_pressed = ExtResource("10_ecvca")
+texture_hover = ExtResource("12_1cqlw")
+texture_disabled = ExtResource("13_cs3fr")
+
+[node name="Exit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 921.0
+offset_top = 786.0
+offset_right = 998.0
+offset_bottom = 863.0
+texture_normal = ExtResource("14_v4svq")
+texture_pressed = ExtResource("14_v4svq")
+texture_hover = ExtResource("15_so31d")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 856.0
+offset_top = 356.0
+offset_right = 870.0
+offset_bottom = 425.0
+theme_override_fonts/font = ExtResource("5_buitq")
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1045.0
+offset_top = 356.0
+offset_right = 1067.0
+offset_bottom = 425.0
+theme_override_fonts/font = ExtResource("5_buitq")
+theme_override_font_sizes/font_size = 50
+text = "2"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 853.0
+offset_top = 525.0
+offset_right = 874.0
+offset_bottom = 594.0
+theme_override_fonts/font = ExtResource("5_buitq")
+theme_override_font_sizes/font_size = 50
+text = "3"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1045.0
+offset_top = 525.0
+offset_right = 1069.0
+offset_bottom = 594.0
+theme_override_fonts/font = ExtResource("5_buitq")
+theme_override_font_sizes/font_size = 50
+text = "4"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 853.0
+offset_top = 694.0
+offset_right = 873.0
+offset_bottom = 763.0
+theme_override_fonts/font = ExtResource("5_buitq")
+theme_override_font_sizes/font_size = 50
+text = "5"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1045.0
+offset_top = 694.0
+offset_right = 1069.0
+offset_bottom = 763.0
+theme_override_fonts/font = ExtResource("5_buitq")
+theme_override_font_sizes/font_size = 50
+text = "6"
+horizontal_alignment = 1
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_inxpd")
+
+[connection signal="pressed" from="Levels/Map1/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Levels/Map1/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="Levels/Map2/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Levels/Map2/Level4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="Levels/Map3/Level5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="Levels/Map3/Level6" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

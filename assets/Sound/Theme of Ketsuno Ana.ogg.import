@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://6awsqqegvvs"
+path="res://.godot/imported/Theme of Ketsuno Ana.ogg-82be607befc258173be8a1e4a86de7af.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/Theme of Ketsuno Ana.ogg"
+dest_files=["res://.godot/imported/Theme of Ketsuno Ana.ogg-82be607befc258173be8a1e4a86de7af.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

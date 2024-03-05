@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dm2yw6jfebgu"
+path="res://.godot/imported/Theme of Daisy.ogg-25ecee3dd35b09f680c224d10e18cb4b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/Theme of Daisy.ogg"
+dest_files=["res://.godot/imported/Theme of Daisy.ogg-25ecee3dd35b09f680c224d10e18cb4b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

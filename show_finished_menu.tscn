@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciki0tidtxwfo"]
+
+[ext_resource type="Script" path="res://show_finished_menu.gd" id="1_67aou"]
+[ext_resource type="PackedScene" uid="uid://pgnwmwqmcl8r" path="res://menus/finished_menu.tscn" id="2_irppo"]
+
+[node name="ShowFinishedMenu" type="Area2D"]
+script = ExtResource("1_67aou")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="FinishedMenu" parent="." instance=ExtResource("2_irppo")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

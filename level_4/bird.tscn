@@ -1,0 +1,148 @@
+[gd_scene load_steps=21 format=3 uid="uid://cfrdcwf3ujkxy"]
+
+[ext_resource type="Script" path="res://level_4/bird.gd" id="1_bk738"]
+[ext_resource type="Texture2D" uid="uid://cn31xc6amb0j6" path="res://assets/Enemy/Level 4/Bird/Death.png" id="1_iydnc"]
+[ext_resource type="Texture2D" uid="uid://cuptnl5qpm6do" path="res://assets/Enemy/Level 4/Bird/Hurt.png" id="2_bupbf"]
+[ext_resource type="Texture2D" uid="uid://e5qw4q6tnylp" path="res://assets/Enemy/Level 4/Bird/Walk.png" id="3_6dj3d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3gj2"]
+radius = 6.0
+height = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33ww2"]
+atlas = ExtResource("1_iydnc")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_432m8"]
+atlas = ExtResource("1_iydnc")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_samif"]
+atlas = ExtResource("1_iydnc")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adcs1"]
+atlas = ExtResource("1_iydnc")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoucu"]
+atlas = ExtResource("3_6dj3d")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbffw"]
+atlas = ExtResource("3_6dj3d")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nss7f"]
+atlas = ExtResource("3_6dj3d")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48ktb"]
+atlas = ExtResource("3_6dj3d")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ate4e"]
+atlas = ExtResource("3_6dj3d")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jos1c"]
+atlas = ExtResource("3_6dj3d")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po03l"]
+atlas = ExtResource("2_bupbf")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8f52"]
+atlas = ExtResource("2_bupbf")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3jdpk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33ww2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_432m8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_samif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adcs1")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoucu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbffw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nss7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48ktb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ate4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jos1c")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po03l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8f52")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxfy5"]
+radius = 6.33333
+height = 20.6667
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5x4j"]
+radius = 6.0
+height = 20.0
+
+[node name="Bird" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_bk738")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_t3gj2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_3jdpk")
+animation = &"fly"
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_cxfy5")
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l5x4j")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

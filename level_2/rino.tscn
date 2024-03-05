@@ -1,0 +1,157 @@
+[gd_scene load_steps=17 format=3 uid="uid://b1copydt7y5a1"]
+
+[ext_resource type="Script" path="res://level_2/rino.gd" id="1_ribcc"]
+[ext_resource type="Texture2D" uid="uid://m0xjk5mntxy3" path="res://assets/Enemy/Level 2/Rino/Hit (52x34).png" id="2_h5680"]
+[ext_resource type="Texture2D" uid="uid://bp7mhldylaanh" path="res://assets/Enemy/Level 2/Rino/Run (52x34).png" id="3_elg5q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3xnds"]
+radius = 14.0
+height = 49.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvgks"]
+atlas = ExtResource("2_h5680")
+region = Rect2(0, 0, 52, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a502c"]
+atlas = ExtResource("2_h5680")
+region = Rect2(104, 0, 52, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgqjt"]
+atlas = ExtResource("3_elg5q")
+region = Rect2(0, 0, 52, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agr83"]
+atlas = ExtResource("3_elg5q")
+region = Rect2(52, 0, 52, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qmot"]
+atlas = ExtResource("3_elg5q")
+region = Rect2(104, 0, 52, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ape0"]
+atlas = ExtResource("3_elg5q")
+region = Rect2(156, 0, 52, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhs52"]
+atlas = ExtResource("3_elg5q")
+region = Rect2(208, 0, 52, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m86nf"]
+atlas = ExtResource("3_elg5q")
+region = Rect2(260, 0, 52, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uca8h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvgks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a502c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvgks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a502c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvgks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a502c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvgks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a502c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvgks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a502c")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgqjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agr83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qmot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ape0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhs52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m86nf")
+}],
+"loop": true,
+"name": &"run",
+"speed": 13.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rsj3j"]
+radius = 14.0
+height = 49.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gleip"]
+radius = 14.5
+height = 50.0
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_lig0a"]
+length = 288.0
+
+[node name="Rino" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_ribcc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3xnds")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -2)
+sprite_frames = SubResource("SpriteFrames_uca8h")
+animation = &"run"
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rsj3j")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gleip")
+
+[node name="Sight" type="Area2D" parent="."]
+
+[node name="Left" type="CollisionShape2D" parent="Sight"]
+rotation = 1.5708
+shape = SubResource("SeparationRayShape2D_lig0a")
+disabled = true
+
+[node name="Right" type="CollisionShape2D" parent="Sight"]
+rotation = -1.5708
+shape = SubResource("SeparationRayShape2D_lig0a")
+disabled = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished" flags=18]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered" flags=18]
+[connection signal="body_entered" from="Sight" to="." method="_on_sight_body_entered"]
+[connection signal="body_exited" from="Sight" to="." method="_on_sight_body_exited"]

@@ -1,0 +1,145 @@
+[gd_scene load_steps=17 format=3 uid="uid://2niu3d7ot528"]
+
+[ext_resource type="Script" path="res://level_2/bee.gd" id="1_re3ep"]
+[ext_resource type="Texture2D" uid="uid://b3f55ed83alxo" path="res://assets/Enemy/Level 2/Bee/Hit (36x34).png" id="2_6j1i1"]
+[ext_resource type="Texture2D" uid="uid://b6ue1jbmt0wbv" path="res://assets/Enemy/Level 2/Bee/Idle (36x34).png" id="3_fiu7o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3xnds"]
+radius = 14.0
+height = 28.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3pqy"]
+atlas = ExtResource("2_6j1i1")
+region = Rect2(0, 0, 36, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnyki"]
+atlas = ExtResource("2_6j1i1")
+region = Rect2(72, 0, 36, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7sks"]
+atlas = ExtResource("3_fiu7o")
+region = Rect2(0, 0, 36, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flqof"]
+atlas = ExtResource("3_fiu7o")
+region = Rect2(36, 0, 36, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knteb"]
+atlas = ExtResource("3_fiu7o")
+region = Rect2(72, 0, 36, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bmso"]
+atlas = ExtResource("3_fiu7o")
+region = Rect2(108, 0, 36, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_547j7"]
+atlas = ExtResource("3_fiu7o")
+region = Rect2(144, 0, 36, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnx0p"]
+atlas = ExtResource("3_fiu7o")
+region = Rect2(180, 0, 36, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8uxxh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3pqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnyki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3pqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnyki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3pqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnyki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3pqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnyki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3pqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnyki")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7sks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flqof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knteb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bmso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_547j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnx0p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rsj3j"]
+radius = 14.0
+height = 28.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gleip"]
+radius = 14.5
+height = 29.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_asnk4"]
+size = Vector2(32, 192)
+
+[node name="Bee" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_re3ep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3xnds")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8uxxh")
+animation = &"idle"
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CapsuleShape2D_rsj3j")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CapsuleShape2D_gleip")
+
+[node name="Sight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
+position = Vector2(0, 96)
+shape = SubResource("RectangleShape2D_asnk4")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished" flags=18]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered" flags=18]
+[connection signal="body_entered" from="Sight" to="." method="_on_sight_body_entered"]
+[connection signal="body_exited" from="Sight" to="." method="_on_sight_body_exited"]

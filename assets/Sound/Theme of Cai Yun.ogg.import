@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dldjtt21dr4wy"
+path="res://.godot/imported/Theme of Cai Yun.ogg-a398dfe456c7c02f32120b685feb800c.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/Theme of Cai Yun.ogg"
+dest_files=["res://.godot/imported/Theme of Cai Yun.ogg-a398dfe456c7c02f32120b685feb800c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
